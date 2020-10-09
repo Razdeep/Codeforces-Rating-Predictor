@@ -1,6 +1,72 @@
-#logo {
-    background: url('../images/codeforces_logo.png');
-    display: inline-block;
-    height: 100px;
-    width: 500px;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    color: #444F62;
+}
+
+.jumbotron {
+    background-color: rgb(238, 238, 238);
+    background-image: url('../images/dot-grid.png');
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container {
+    width: 40%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 5px 5px 50px lightgray;
+    border-radius: 10px;
+}
+
+.logo {
+    padding-top: 1em;
+}
+
+p {
+    padding-bottom: 1em;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+input {
+    height: 3em;
+    border-radius: 50px;
+    border: 1px solid lightgrey;
+    padding-left: 1em;
+    outline: none;
+} 
+
+button {
+    margin: 1em 0em;
+    padding: 1em 2em;
+    border: none;
+    border-radius: 50px;
+    background-color:#47509F;
+    border: 2px solid #47509F;
+    color: #707070;
+    font-weight: bold;
+    color: white;
+    outline: none;
+}
+
+button:hover {
+    background-color: white;
+    color: #47509F;
+    border: 2px solid #47509F;
+    transition: .7s;
 }
