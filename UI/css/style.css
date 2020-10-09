@@ -10,7 +10,7 @@
 
 .jumbotron {
     background-color: rgb(238, 238, 238);
-    background-image: url('./img/dot-grid.png');
+    background-image: url('../images/dot-grid.png');
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -48,6 +48,7 @@ input {
     border-radius: 50px;
     border: 1px solid lightgrey;
     padding-left: 1em;
+    outline: none;
 } 
 
 button {
@@ -60,6 +61,7 @@ button {
     color: #707070;
     font-weight: bold;
     color: white;
+    outline: none;
 }
 
 button:hover {
