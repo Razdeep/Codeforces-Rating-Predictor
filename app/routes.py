@@ -6,16 +6,20 @@ from app import visualizer
 import requests
 import logging
 from bs4 import BeautifulSoup
+import logging
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
+    logger = logging.Logger(__name__)
     if (request.method == 'POST'):
         handle = request.form.get('handle')
         # soup = 0
         try:
             url = f'https://codeforces.com/profile/{handle}'
             html_page = requests.get(url)
+            logger.info('Codeforces Profile HTML page received through GET')
             soup = BeautifulSoup(html_page.content, 'html5lib')
+            logger.info('CF Profile HTML parsed by bs4')
             name = scrapers.getName(soup, handle)
             current_ratings = scrapers.getCurrentRatings(soup, handle)
             profile_URL = url
