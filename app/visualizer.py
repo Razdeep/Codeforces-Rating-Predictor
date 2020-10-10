@@ -8,7 +8,7 @@ import os
 import secrets
 import logging
 
-logger = logging.Logger(__name__)
+logging.basicConfig(filename='myapp.log', level=logging.INFO)
 
 def visualize(handle):
     try:
