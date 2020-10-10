@@ -6,6 +6,9 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import os
 import secrets
+import logging
+
+logger = logging.Logger(__name__)
 
 def visualize(handle):
     try:

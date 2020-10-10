@@ -1,3 +1,7 @@
+import logging
+
+logger = logging.Logger(__name__)
+
 def getName(soup, handle):
     try:
         filter_1 = soup.find('div', attrs={'class': 'main-info'})

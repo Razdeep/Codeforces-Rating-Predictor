@@ -8,6 +8,8 @@ import logging
 from bs4 import BeautifulSoup
 import logging
 
+logger = logging.Logger(__name__)
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if (request.method == 'POST'):
