@@ -5,7 +5,7 @@
     <title>Codeforces Rating Predictor</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -15,16 +15,16 @@
     <div class="jumbotron text-center">
         <div class="container">
             <div class="logo">
-                <img src="./img/codeforces_logo.png" alt="codeforces logo">
+                <img src="./images/codeforces_logo.png" alt="codeforces logo">
             </div>
             <h1>Rating Predictor</h1>
 
             <p>Bring analytics to the world of competitive coding</p>
-            <form class="form-inline">
+            <form method="POST" class="form-inline">
                 <div class="input-group">
-                    <input type="text" class="form-control" size="50" placeholder="Codeforces Handle" required>
+                    <input name="handle" type="text" class="form-control" size="50" placeholder="Codeforces Handle" required>
                     <div class="input-group-btn">
-                        <button type="button" class="btn btn-primary">Analyze</button>
+                        <button type="submit" class="btn btn-primary">Analyze</button>
                     </div>
                 </div>
             </form>

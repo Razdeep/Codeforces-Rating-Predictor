@@ -8,13 +8,14 @@ import os
 import secrets
 import logging
 
+logging.basicConfig(filename='myapp.log', level=logging.INFO)
+
 def visualize(handle):
-    logger = logging.Logger(__name__)
     try:
         url = f'https://codeforces.com/contests/with/{handle}'
         html_page = requests.get(url)
         soup = BeautifulSoup(html_page.content, 'html5lib')
-        logger.info("Successfully parsed soup")
+        logging.info("Successfully parsed soup")
         table = soup.find('table', attrs = {'class' : 'user-contests-table'})
         ratings_tr = table.findAll('tr')
         ratings_tr = ratings_tr[1:]
@@ -45,10 +46,11 @@ def visualize(handle):
         os.makedirs(path, exist_ok = True)
         plt.savefig(path + output_filename)
         plt.close()
+        logging.info('visualize() returned: ' + output_filename)
         return output_filename
     except Exception as e:
         msg = 'Couldn\'t generate graph'
-        logger.warning(msg)
+        logging.warning(msg)
         raise Exception(e)
 
 

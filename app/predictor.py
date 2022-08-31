@@ -3,6 +3,9 @@ import requests
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
+import logging
+
+logging.basicConfig(filename='myapp.log', level=logging.INFO)
 
 def predict(handle) -> int:
     url = f'https://codeforces.com/contests/with/{handle}'
@@ -26,22 +29,8 @@ def predict(handle) -> int:
     model.fit(idx_df, ratings_df)
     output = model.predict([[ratings_df.shape[0] + 1]])
     output = int(output)
+    logging.info(f'predict() returned: {output}')
     return output  
-
-    # Visualization
-
-    # plt.plot(idx_df, ratings_df)
-    # plt.title('Username : {}'.format(handle))
-    # plt.xlabel('Contest ID')
-    # plt.ylabel('Ratings')
-    # dummy_dataset = pd.DataFrame(np.arange(0, ratings_df.shape[0]))
-    # plt.plot(dummy_dataset, model.predict(dummy_dataset))
-    # plt.savefig()
-
-
-
 
 if __name__ == '__main__':
     predict('razdeep')
-
-
