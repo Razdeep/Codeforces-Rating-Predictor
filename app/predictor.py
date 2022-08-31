@@ -29,7 +29,7 @@ def predict(handle) -> int:
     model.fit(idx_df, ratings_df)
     output = model.predict([[ratings_df.shape[0] + 1]])
     output = int(output)
-    logging.info('predict() returned: ' + output)
+    logging.info(f'predict() returned: {output}')
     return output  
 
 if __name__ == '__main__':
