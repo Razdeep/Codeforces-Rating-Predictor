@@ -2,7 +2,7 @@ gunicorn
 matplotlib
 beautifulsoup4==4.8.1
 numpy==1.22.0
-pandas==0.25.1
+pandas==1.4.3
 requests==2.22.0
 sklearn==0.0
 html5lib

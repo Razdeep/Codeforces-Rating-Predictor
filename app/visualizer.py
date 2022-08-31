@@ -11,8 +11,7 @@ import logging
 def visualize(handle):
     logger = logging.Logger(__name__)
     try:
-        url = 'https://codeforces.com/contests/with/'
-        url += handle
+        url = f'https://codeforces.com/contests/with/{handle}'
         html_page = requests.get(url)
         soup = BeautifulSoup(html_page.content, 'html5lib')
         logger.info("Successfully parsed soup")
@@ -36,7 +35,7 @@ def visualize(handle):
         # Visualization
 
         plt.plot(idx_df, ratings_df)
-        plt.title('Username : {}'.format(handle))
+        plt.title(f'Username : {handle}')
         plt.xlabel('Contest ID')
         plt.ylabel('Ratings')
         dummy_dataset = pd.DataFrame(np.arange(0, ratings_df.shape[0]))

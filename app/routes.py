@@ -4,6 +4,7 @@ from app import scrapers
 from app import predictor
 from app import visualizer
 import requests
+import logging
 from bs4 import BeautifulSoup
 
 @app.route('/', methods=['GET', 'POST'])
@@ -12,8 +13,7 @@ def home():
         handle = request.form.get('handle')
         # soup = 0
         try:
-            url = 'https://codeforces.com/profile/'
-            url += handle
+            url = f'https://codeforces.com/profile/{handle}'
             html_page = requests.get(url)
             soup = BeautifulSoup(html_page.content, 'html5lib')
             name = scrapers.getName(soup, handle)
@@ -35,8 +35,7 @@ def home():
                                                     img_url=img_url,
                                                     graph_url=graph_url)
         except Exception as e:
-            print("Error fetching the soup")
-            print(str(e))
+            logging.exception(str(e))
             return render_template('404.html')
       
     return render_template('index.html')

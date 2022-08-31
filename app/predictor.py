@@ -4,9 +4,8 @@ import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
 
-def predict(handle):
-    url = 'https://codeforces.com/contests/with/'
-    url += handle
+def predict(handle) -> int:
+    url = f'https://codeforces.com/contests/with/{handle}'
     html_page = requests.get(url)
     soup = BeautifulSoup(html_page.content, 'html5lib')
     table = soup.find('table', attrs = {'class' : 'user-contests-table'})

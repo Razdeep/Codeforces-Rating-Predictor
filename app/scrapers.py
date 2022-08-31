@@ -50,15 +50,14 @@ def getProfileURL(soup, handle):
     filter_4 = filter_3.find('div')
     filter_5 = filter_4.find('img')
     img_url = filter_5['src'][2:]
-    img_url = 'https://'+img_url
+    img_url = f'https://{img_url}'
     return img_url
 
 if __name__ == '__main__':
     from bs4 import BeautifulSoup
     import requests
     handle = 'razdeep'
-    url = 'https://codeforces.com/profile/'
-    url += handle
+    url = f'https://codeforces.com/profile/{handle}'
     html_page = requests.get(url)
     soup = BeautifulSoup(html_page.content, 'html5lib')
     getCurrentRatings(soup, handle)
