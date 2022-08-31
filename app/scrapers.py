@@ -55,13 +55,8 @@ def getProfileURL(soup, handle):
     filter_4 = filter_3.find('div')
     filter_5 = filter_4.find('img')
     img_url = filter_5['src'][2:]
-<<<<<<< HEAD
     img_url = f'https://{img_url}'
-    logger.info('getProfileURL() returned:' + img_url)
-=======
-    img_url = 'https://'+img_url
     logging.info('getProfileURL() returned:' + img_url)
->>>>>>> 91710f0 (Info logging is now dumped into file)
     return img_url
 
 if __name__ == '__main__':
