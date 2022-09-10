@@ -34,4 +34,5 @@ class Predictor:
         return output  
 
 if __name__ == '__main__':
-    predict('razdeep')
+    predictor = Predictor()
+    predictor.predict('razdeep')
