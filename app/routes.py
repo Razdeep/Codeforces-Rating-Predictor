@@ -1,13 +1,16 @@
 from app import app
 from flask import render_template, request
-from app import scrapers
-from app import predictor
-from app import visualizer
+from app.scraper import Scraper
+from app.predictor import Predictor
+from app.visualizer import Visualizer
 import requests
 import logging
 from bs4 import BeautifulSoup
 
-logger = logging.getLogger()
+logger = logging.getLogger('Routes')
+scraper = Scraper()
+predictor = Predictor()
+visualizer = Visualizer()
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -21,13 +24,13 @@ def home():
             logger.info('Codeforces Profile HTML page received through GET')
             soup = BeautifulSoup(html_page.content, 'html5lib')
             logger.info('CF Profile HTML parsed by bs4')
-            name = scrapers.getName(soup, handle)
-            current_ratings = scrapers.getCurrentRatings(soup, handle)
+            name = scraper.getName(soup, handle)
+            current_ratings = scraper.getCurrentRatings(soup, handle)
             profile_URL = url
-            img_url = scrapers.getProfileURL(soup, handle)
+            img_url = scraper.getProfileURL(soup, handle)
             predicted = predictor.predict(handle)
-            university = scrapers.getUniversity(soup, handle)
-            rank = scrapers.getRank(soup, handle)
+            university = scraper.getUniversity(soup, handle)
+            rank = scraper.getRank(soup, handle)
             graph_url = visualizer.visualize(handle)
 
             return render_template('result.html', handle=handle,
