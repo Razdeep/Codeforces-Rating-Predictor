@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 import logging
 
-logging.basicConfig(filename='myapp.log', level=logging.INFO)
+logger = logging.getLogger()
 
 def predict(handle) -> int:
     url = f'https://codeforces.com/contests/with/{handle}'
@@ -29,7 +29,7 @@ def predict(handle) -> int:
     model.fit(idx_df, ratings_df)
     output = model.predict([[ratings_df.shape[0] + 1]])
     output = int(output)
-    logging.info(f'predict() returned: {output}')
+    logger.info(f'predict() returned: {output}')
     return output  
 
 if __name__ == '__main__':

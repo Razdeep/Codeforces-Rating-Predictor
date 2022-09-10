@@ -6,21 +6,21 @@ from app import visualizer
 import requests
 import logging
 from bs4 import BeautifulSoup
-import logging
-logging.basicConfig(filename='myapp.log', level=logging.INFO)
+
+logger = logging.getLogger()
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if (request.method == 'POST'):
         handle = request.form.get('handle')
-        logging.info('Handle received from post request: ' + handle)
+        logger.info('Handle received from post request: ' + handle)
         try:
             url = f'https://codeforces.com/profile/{handle}'
-            logging.info('Profile URL to be fetched: ' + url)
+            logger.info('Profile URL to be fetched: ' + url)
             html_page = requests.get(url)
-            logging.info('Codeforces Profile HTML page received through GET')
+            logger.info('Codeforces Profile HTML page received through GET')
             soup = BeautifulSoup(html_page.content, 'html5lib')
-            logging.info('CF Profile HTML parsed by bs4')
+            logger.info('CF Profile HTML parsed by bs4')
             name = scrapers.getName(soup, handle)
             current_ratings = scrapers.getCurrentRatings(soup, handle)
             profile_URL = url
@@ -40,7 +40,7 @@ def home():
                                                     img_url=img_url,
                                                     graph_url=graph_url)
         except Exception as e:
-            logging.exception(str(e))
+            logger.exception(e)
             return render_template('404.html')
       
     return render_template('index.html')

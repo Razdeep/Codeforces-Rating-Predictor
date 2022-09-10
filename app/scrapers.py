@@ -1,6 +1,6 @@
 import logging
 
-logging.basicConfig(filename='myapp.log', level=logging.INFO)
+logger = logging.getLogger()
 
 def getName(soup, handle):
     try:
@@ -8,11 +8,11 @@ def getName(soup, handle):
         filter_2 = filter_1.findAll('div')
         filter_3 = filter_2[1].find('div')
         name = filter_3.text.split(',')[0]
-        logging.info('getName() returned:' + name)
+        logger.info('getName() returned:' + name)
         return name
     except Exception as e:
-        print('Error while getting name')
-        print(str(e))
+        logger.warn('Error while getting name')
+        logger.exception(e)
         return 'Not Found'
 
 def getCurrentRatings(soup, handle):
@@ -22,11 +22,10 @@ def getCurrentRatings(soup, handle):
         filter_3 = filter_2.find('li')
         filter_4 = filter_3.find('span')
         current_ratings = filter_4.text
-        logging.info('getCurrentRatings() returned:' + current_ratings)
+        logger.info('getCurrentRatings() returned:' + current_ratings)
         return current_ratings
     except Exception as e:
-        print('Error while getting Ratings')
-        print(str(e))
+        logger.exception(e)
         return 'Not Found'
 
 def getUniversity(soup, handle):
@@ -36,7 +35,7 @@ def getUniversity(soup, handle):
     if len(filter_2) > 3:
         filter_3 = filter_2[3].find('a')
         university = filter_3.text
-    logging.info('getUniversity() returned:' + university)
+    logger.info('getUniversity() returned:' + university)
     return university
 
 def getRank(soup, handle):
@@ -44,8 +43,7 @@ def getRank(soup, handle):
     filter_2 = filter_1.find('div')
     filter_3 = filter_2.find('span')
     rank = filter_3.text
-    print(rank)
-    logging.info('getRank() returned:' + rank)
+    logger.info('getRank() returned:' + rank)
     return rank
 
 def getProfileURL(soup, handle):
@@ -56,7 +54,7 @@ def getProfileURL(soup, handle):
     filter_5 = filter_4.find('img')
     img_url = filter_5['src'][2:]
     img_url = f'https://{img_url}'
-    logging.info('getProfileURL() returned:' + img_url)
+    logger.info(f'getProfileURL() returned: {img_url}')
     return img_url
 
 if __name__ == '__main__':
