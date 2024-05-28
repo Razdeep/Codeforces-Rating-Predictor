@@ -8,7 +8,7 @@ COPY run.py .
 COPY app ./app
 COPY requirements.txt .
 
-RUN apk add --update --no-cache python3 && \
+RUN apk add --update --no-cache python3 py3-pip && \
     python3 -m pip --no-cache install -r requirements.txt
 
 USER cfpredictor
