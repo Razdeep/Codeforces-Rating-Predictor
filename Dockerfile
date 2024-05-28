@@ -9,8 +9,8 @@ COPY app ./app
 COPY requirements.txt .
 
 RUN apk add --update --no-cache python3 && \
-    python3 -m ensurepip --upgrade && \
-    python3 -m pip --no-cache install -r requirements.txt
+    python3 -m venv .venv && \
+    /home/cfpredictor/.venv/bin/pip3 --no-cache install -r requirements.txt
 
 USER cfpredictor
 
