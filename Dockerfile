@@ -1,18 +1,20 @@
-FROM ubuntu:latest
+FROM alpine:3.20.0
 
-RUN useradd -ms /bin/bash cfpredictor
+RUN addgroup -S cfpredictorgroup && adduser -S cfpredictor -G cfpredictorgroup
+
 WORKDIR /home/cfpredictor
+
 COPY run.py .
 COPY app ./app
 COPY requirements.txt .
 
-RUN apt update && apt install -y python3 python3-pip
-RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install -r requirements.txt
+RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python && \
+    python3 -m ensurepip && \
+    pip3 --no-cache install --upgrade pip setuptools && \
+    python3 -m pip --no-cache install -r requirements.txt
 
 USER cfpredictor
 
 WORKDIR /home/cfpredictor
 
 CMD ["python3", "run.py"]
-# ENTRYPOINT ["python3", "run.py"]
