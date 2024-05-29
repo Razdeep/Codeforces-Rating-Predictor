@@ -4,11 +4,10 @@ RUN addgroup -S cfpredictorgroup && adduser -S cfpredictor -G cfpredictorgroup
 
 WORKDIR /home/cfpredictor
 
-COPY run.py .
+COPY run.py requirements.txt /home/cfpredictor/
 COPY app ./app
-COPY requirements.txt .
 
-RUN apk add --update --no-cache python3 && \
+RUN apk add --update --no-cache python3=3.11 && \
     python3 -m venv .venv && \
     /home/cfpredictor/.venv/bin/python3 -m ensurepip --upgrade && \
     /home/cfpredictor/.venv/bin/pip3 --no-cache install --upgrade pip setuptools && \
