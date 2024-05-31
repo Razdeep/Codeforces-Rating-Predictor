@@ -4,6 +4,6 @@ beautifulsoup4
 numpy
 pandas
 requests
-sklearn
+scikit-learn
 html5lib
 flask
