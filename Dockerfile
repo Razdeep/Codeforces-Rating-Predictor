@@ -7,14 +7,12 @@ WORKDIR /home/cfpredictor
 COPY run.py requirements.txt /home/cfpredictor/
 COPY app ./app
 
-RUN apk add --update --no-cache python3=3.11 && \
+RUN apk add --update --no-cache python3 && \
     python3 -m venv .venv && \
     /home/cfpredictor/.venv/bin/python3 -m ensurepip --upgrade && \
     /home/cfpredictor/.venv/bin/pip3 --no-cache install --upgrade pip setuptools && \
     /home/cfpredictor/.venv/bin/pip3 --no-cache install -r requirements.txt
 
 USER cfpredictor
-
-WORKDIR /home/cfpredictor
 
 CMD ["python3", "run.py"]
