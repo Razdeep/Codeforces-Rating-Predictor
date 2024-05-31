@@ -4,7 +4,7 @@ RUN addgroup -S cfpredictorgroup && adduser -S cfpredictor -G cfpredictorgroup
 
 WORKDIR /home/cfpredictor
 
-RUN apk add --update --no-cache python3 clang python3-devel && \
+RUN apk add --update --no-cache python3 clang pkgconfig && \
     python3 -m venv .venv && \
     /home/cfpredictor/.venv/bin/python3 -m ensurepip --upgrade && \
     /home/cfpredictor/.venv/bin/pip3 --no-cache install --upgrade pip setuptools && \
