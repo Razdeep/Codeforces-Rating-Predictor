@@ -19,7 +19,7 @@ FROM alpine:3.20.0
 ENV PATH="/home/cfpredictor/.venv/bin:$PATH"
 
 RUN addgroup -S cfpredictorgroup && adduser -S cfpredictor -G cfpredictorgroup && \
-    apk add --update --no-cache python3
+    apk add --update --no-cache python3 libgomp
 
 WORKDIR /home/cfpredictor
 
