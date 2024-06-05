@@ -27,6 +27,8 @@ COPY --from=builder /home/cfpredictor/.venv/ /home/cfpredictor/.venv/
 COPY run.py requirements.txt /home/cfpredictor/
 COPY app ./app
 
+RUN chown -R cfpredictor:cfpredictor /home/cfpredictor
+
 USER cfpredictor
 
 CMD ["python3", "run.py"]
