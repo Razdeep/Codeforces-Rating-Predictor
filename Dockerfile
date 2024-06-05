@@ -8,7 +8,7 @@ COPY requirements.txt /home/cfpredictor/
 
 ENV PATH="/home/cfpredictor/.venv/bin:$PATH"
 
-RUN apk add --update --no-cache python3 clang pkgconfig python3-dev libgomp libgomp-dev && \
+RUN apk add --update --no-cache python3 clang pkgconfig python3-dev libgomp && \
     python3 -m venv .venv && \
     python3 -m ensurepip --upgrade && \
     pip3 --no-cache install --upgrade pip setuptools && \
